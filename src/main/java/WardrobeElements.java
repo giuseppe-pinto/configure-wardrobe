@@ -1,14 +1,16 @@
+import java.util.List;
+
 public class WardrobeElements
 {
-  private final ElementSizeInCm elementSizeInCm;
+  private List<ElementSizeInCm> elementSizeInCmList;
 
-  public WardrobeElements(ElementSizeInCm elementSizeInCm)
+  public WardrobeElements(List<ElementSizeInCm> elementSizeInCmList)
   {
-    this.elementSizeInCm = elementSizeInCm;
+    this.elementSizeInCmList = elementSizeInCmList;
   }
 
-  public ElementSizeInCm getElementSize()
+  public List<ElementSizeInCm> getElementSizeInCmList()
   {
-    return elementSizeInCm;
+    return elementSizeInCmList;
   }
 }

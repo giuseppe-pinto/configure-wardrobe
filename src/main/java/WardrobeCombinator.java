@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WardrobeCombinator
 {
@@ -12,7 +13,13 @@ public class WardrobeCombinator
     List<Integer> combinations = new ArrayList<>();
     
     while(calculateSize(combinations) < maxSizeWallInCm){
-      combinations.add(wardrobeElements.getElementSize().getSize());
+      
+      combinations.addAll(wardrobeElements
+                              .getElementSizeInCmList()
+                              .stream()
+                              .map(ElementSizeInCm::getSize)
+                              .collect(Collectors.toList()));
+      
     }
     return combinations;
   }

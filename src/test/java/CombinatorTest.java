@@ -1,25 +1,38 @@
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
 import static java.util.Collections.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CombinatorTest
 {
 
-  @Test
-  void calculateTheBestsCombinationsWithSingleElementAndSingleSize()
-  {
-    int maxSizeWallInCm = 250;
-    WardrobeElements wardrobeElements = new WardrobeElements(ElementSizeInCm.FIFTY);
+  private int maxSizeWallInCm = 250;
 
-    WardrobeCombinator wardrobeCombinator = new WardrobeCombinator();
+  @Test
+  void bestsCombinationsWithSingleSizeElements()
+  {
+    WardrobeElements wardrobeElements = new WardrobeElements(singletonList(ElementSizeInCm.FIFTY));
+
+    List<Integer> actualCombinations = new WardrobeCombinator()
+        .combine(maxSizeWallInCm, wardrobeElements);
     
-    List<Integer> actualCombinations = wardrobeCombinator.combine(maxSizeWallInCm, wardrobeElements);
     List<Integer> expectedCombinations = Arrays.asList(50,50,50,50,50);
     
     assertNotNull(actualCombinations);
     assertIterableEquals(expectedCombinations, actualCombinations);
+  }
+
+  @Test
+  @Disabled
+  void bestsCombinationsWithMultiSizeElements()
+  {
+    WardrobeElements wardrobeElements = 
+        new WardrobeElements(Arrays.asList(ElementSizeInCm.FIFTY));
+    
+
   }
 }

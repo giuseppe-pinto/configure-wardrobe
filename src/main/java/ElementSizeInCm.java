@@ -1,6 +1,7 @@
 public enum ElementSizeInCm
 {
-  FIFTY(50);
+  FIFTY(50),
+  SEVENTY_FIVE(75);
   
   private final int size;
 
