@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static java.util.Collections.*;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -18,9 +17,7 @@ class CombinatorTest
   @Test
   void bestsCombinationsWithSingleSizeElements()
   {
-    Set<ElementSizeInCm> elementSizeInCms = new HashSet<>();
-    elementSizeInCms.add(ElementSizeInCm.FIFTY);
-    WardrobeElements wardrobeElements = new WardrobeElements(elementSizeInCms);
+    WardrobeElements wardrobeElements = createWardrobeElements(ElementSizeInCm.FIFTY);
 
     List<Integer> actualCombinations = new WardrobeCombinator()
         .combine(maxSizeWallInCm, wardrobeElements);
@@ -31,21 +28,25 @@ class CombinatorTest
     assertIterableEquals(expectedCombinations, actualCombinations);
   }
 
+
   @Test
+  @Disabled
   void bestsCombinationsWithMultiSizeElements()
   {
-
-    Set<ElementSizeInCm> elementSizeInCms = new HashSet<>();
-    elementSizeInCms.add(ElementSizeInCm.FIFTY);
     
-    WardrobeElements wardrobeElements = 
-        new WardrobeElements(elementSizeInCms);
+    WardrobeElements wardrobeElements = createWardrobeElements(ElementSizeInCm.FIFTY,
+                                                               ElementSizeInCm.SEVENTY_FIVE);
     
     
     
     
     
-    
-
   }
+  
+  private WardrobeElements createWardrobeElements(ElementSizeInCm... elementSizeInCm)
+  {
+    Set<ElementSizeInCm> elementSizeInCms = new HashSet<>(Arrays.asList(elementSizeInCm));
+    return new WardrobeElements(elementSizeInCms);
+  }
+  
 }
