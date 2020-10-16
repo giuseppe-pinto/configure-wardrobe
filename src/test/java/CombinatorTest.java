@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
+import static com.giuseppe.pinto.configure.wardrobe.domain.ElementSizeInCm.*;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -17,12 +18,12 @@ class CombinatorTest
   @Test
   void bestsCombinationsWithSingleSizeElements()
   {
-    WardrobeElements wardrobeElements = createWardrobeElements(ElementSizeInCm.FIFTY);
+    WardrobeElements wardrobeElements = createWardrobeElements(FIFTY);
 
-    List<Integer> actualCombinations = new WardrobeCombinator()
+    List<ElementSizeInCm> actualCombinations = new WardrobeCombinator()
         .combine(maxSizeWallInCm, wardrobeElements);
     
-    List<Integer> expectedCombinations = Arrays.asList(50,50,50,50,50);
+    List<ElementSizeInCm> expectedCombinations = Arrays.asList(FIFTY,FIFTY,FIFTY,FIFTY,FIFTY);
     
     assertNotNull(actualCombinations);
     assertIterableEquals(expectedCombinations, actualCombinations);
@@ -34,8 +35,8 @@ class CombinatorTest
   void bestsCombinationsWithMultiSizeElements()
   {
     
-    WardrobeElements wardrobeElements = createWardrobeElements(ElementSizeInCm.FIFTY,
-                                                               ElementSizeInCm.SEVENTY_FIVE);
+    WardrobeElements wardrobeElements = createWardrobeElements(FIFTY,
+                                                               SEVENTY_FIVE);
     
     
     

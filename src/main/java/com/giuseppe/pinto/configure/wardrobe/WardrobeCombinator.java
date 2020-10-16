@@ -5,33 +5,28 @@ import com.giuseppe.pinto.configure.wardrobe.domain.WardrobeElements;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WardrobeCombinator
 {
 
   public WardrobeCombinator() { }
 
-  public List<Integer> combine(int maxSizeWallInCm,
-                               WardrobeElements wardrobeElements){
+  public List<ElementSizeInCm> combine(int maxSizeWallInCm,
+                                       WardrobeElements wardrobeElements){
 
-    List<Integer> combinations = new ArrayList<>();
+    List<ElementSizeInCm> combinations = new ArrayList<>();
     
     while(calculateSize(combinations) < maxSizeWallInCm){
       
-      combinations.addAll(wardrobeElements
-                              .getElementSizeInCmSet()
-                              .stream()
-                              .map(ElementSizeInCm::getSize)
-                              .collect(Collectors.toList()));
+      combinations.addAll(new ArrayList<>(wardrobeElements.getElementSizeInCmSet()));
       
     }
     return combinations;
   }
 
-  private Integer calculateSize(List<Integer> combinations)
+  private Integer calculateSize(List<ElementSizeInCm> combinations)
   {
-    return combinations.stream().reduce(0, Integer::sum);
+    return combinations.stream().map(ElementSizeInCm::getSize).reduce(0, Integer::sum);
   }
 
 }
