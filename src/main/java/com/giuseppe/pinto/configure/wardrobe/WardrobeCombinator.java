@@ -20,7 +20,7 @@ public class WardrobeCombinator
     while(calculateSize(combinations) < maxSizeWallInCm){
       
       combinations.addAll(wardrobeElements
-                              .getElementSizeInCmList()
+                              .getElementSizeInCmSet()
                               .stream()
                               .map(ElementSizeInCm::getSize)
                               .collect(Collectors.toList()));

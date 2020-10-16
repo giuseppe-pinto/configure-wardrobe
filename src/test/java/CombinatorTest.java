@@ -18,7 +18,9 @@ class CombinatorTest
   @Test
   void bestsCombinationsWithSingleSizeElements()
   {
-    WardrobeElements wardrobeElements = new WardrobeElements(singletonList(ElementSizeInCm.FIFTY));
+    Set<ElementSizeInCm> elementSizeInCms = new HashSet<>();
+    elementSizeInCms.add(ElementSizeInCm.FIFTY);
+    WardrobeElements wardrobeElements = new WardrobeElements(elementSizeInCms);
 
     List<Integer> actualCombinations = new WardrobeCombinator()
         .combine(maxSizeWallInCm, wardrobeElements);
@@ -30,11 +32,19 @@ class CombinatorTest
   }
 
   @Test
-  @Disabled
   void bestsCombinationsWithMultiSizeElements()
   {
+
+    Set<ElementSizeInCm> elementSizeInCms = new HashSet<>();
+    elementSizeInCms.add(ElementSizeInCm.FIFTY);
+    
     WardrobeElements wardrobeElements = 
-        new WardrobeElements(Arrays.asList(ElementSizeInCm.FIFTY));
+        new WardrobeElements(elementSizeInCms);
+    
+    
+    
+    
+    
     
 
   }
