@@ -4,33 +4,73 @@ import com.giuseppe.pinto.configure.wardrobe.domain.*;
 
 import java.util.*;
 
-import static java.util.Collections.*;
-
 public class WardrobeCombinator
 {
 
-  public WardrobeCombinator()
-  {
-  }
-
-  public List<ElementsCombination> combine(int maxSizeWallInCm,
+  public List<ElementsCombination> combine(int maxLengthWallInCm,
                                            WardrobeElements wardrobeElements)
   {
 
-    List<ElementSizeInCm> elementSizeInCmArrayList = new ArrayList<>();
-    while (calculateSize(elementSizeInCmArrayList) < maxSizeWallInCm)
+    List<ElementsCombination> combinations = new ArrayList<>();
+
+    List<ElementLengthInCm> list = wardrobeElements.getElementLengthInCm();
+
+    for (int i = 0; i < list.size(); i++)
     {
 
-      elementSizeInCmArrayList.addAll(new ArrayList<>(wardrobeElements.getElementSizeInCmSet()));
+      for (int j = 0; j < 6; j++)
+      {
+        List<ElementLengthInCm> temp = new ArrayList<>();
+
+        for (int k = 0; k < 5; k++)
+        {
+          if (calculateLength(temp) < maxLengthWallInCm)
+          {
+            if (j == 1 && k >= 4)
+            {
+              temp.add(list.get(i + 1));
+            }
+            else if (j == 2 && k >= 3)
+            {
+              temp.add(list.get(i + 1));
+            }
+            else if (j == 3 && k >= 2)
+            {
+              temp.add(list.get(i + 1));
+            }
+            else if (j == 4 && k >= 1)
+            {
+              temp.add(list.get(i + 1));
+            }
+            else if (j == 5)
+            {
+              temp.add(list.get(i + 1));
+            }
+            else
+            {
+              temp.add(list.get(i));
+            }
+          }
+          if (calculateLength(temp) == maxLengthWallInCm)
+          {
+            if (!combinations.contains(new ElementsCombination(temp)))
+            {
+              combinations.add(new ElementsCombination(temp));
+            }
+          }
+        }
+
+        if (i + 1 == list.size())
+          break;
+      }
 
     }
-
-    return singletonList(new ElementsCombination(elementSizeInCmArrayList));
+    return combinations;
   }
 
-  private Integer calculateSize(List<ElementSizeInCm> combinations)
+  private Integer calculateLength(List<ElementLengthInCm> combinations)
   {
-    return combinations.stream().map(ElementSizeInCm::getSize).reduce(0, Integer::sum);
+    return combinations.stream().map(ElementLengthInCm::getSize).reduce(0, Integer::sum);
   }
 
 }

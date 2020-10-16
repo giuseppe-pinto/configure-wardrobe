@@ -5,11 +5,11 @@ import java.util.Objects;
 
 public class ElementsCombination
 {
-  private final List<ElementSizeInCm> elementSizeInCmList;
+  private final List<ElementLengthInCm> elementLengthInCmList;
 
-  public ElementsCombination(List<ElementSizeInCm> elementSizeInCmList)
+  public ElementsCombination(List<ElementLengthInCm> elementLengthInCmList)
   {
-    this.elementSizeInCmList = elementSizeInCmList;
+    this.elementLengthInCmList = elementLengthInCmList;
   }
 
   @Override
@@ -20,11 +20,18 @@ public class ElementsCombination
     if (o == null || getClass() != o.getClass())
       return false;
     ElementsCombination that = (ElementsCombination) o;
-    return Objects.equals(elementSizeInCmList, that.elementSizeInCmList);
+    return Objects.equals(elementLengthInCmList, that.elementLengthInCmList);
   }
 
   @Override public int hashCode()
   {
-    return Objects.hash(elementSizeInCmList);
+    return Objects.hash(elementLengthInCmList);
+  }
+
+  @Override public String toString()
+  {
+    return "ElementsCombination{" +
+        "elementLengthInCmList=" + elementLengthInCmList +
+        '}';
   }
 }

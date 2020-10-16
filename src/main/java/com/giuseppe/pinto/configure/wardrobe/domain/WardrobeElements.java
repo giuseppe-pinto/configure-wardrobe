@@ -1,18 +1,19 @@
 package com.giuseppe.pinto.configure.wardrobe.domain;
 
+import java.util.List;
 import java.util.Set;
 
 public class WardrobeElements
 {
-  private final Set<ElementSizeInCm> elementSizeInCmSet;
+  private final List<ElementLengthInCm> elementLengthInCmList;
 
-  public WardrobeElements(Set<ElementSizeInCm> elementSizeInCmSet)
+  public WardrobeElements(List<ElementLengthInCm> elementLengthInCmList)
   {
-    this.elementSizeInCmSet = elementSizeInCmSet;
+    this.elementLengthInCmList = elementLengthInCmList;
   }
 
-  public Set<ElementSizeInCm> getElementSizeInCmSet()
+  public List<ElementLengthInCm> getElementLengthInCm()
   {
-    return elementSizeInCmSet;
+    return elementLengthInCmList;
   }
 }
