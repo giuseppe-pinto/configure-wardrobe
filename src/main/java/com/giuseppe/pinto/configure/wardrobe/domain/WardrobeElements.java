@@ -1,3 +1,5 @@
+package com.giuseppe.pinto.configure.wardrobe.domain;
+
 import java.util.List;
 
 public class WardrobeElements

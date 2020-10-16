@@ -1,3 +1,6 @@
+import com.giuseppe.pinto.configure.wardrobe.*;
+import com.giuseppe.pinto.configure.wardrobe.domain.ElementSizeInCm;
+import com.giuseppe.pinto.configure.wardrobe.domain.WardrobeElements;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

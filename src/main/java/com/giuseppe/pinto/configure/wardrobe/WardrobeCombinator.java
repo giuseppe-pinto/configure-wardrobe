@@ -1,3 +1,8 @@
+package com.giuseppe.pinto.configure.wardrobe;
+
+import com.giuseppe.pinto.configure.wardrobe.domain.ElementSizeInCm;
+import com.giuseppe.pinto.configure.wardrobe.domain.WardrobeElements;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
