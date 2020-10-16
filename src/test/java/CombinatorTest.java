@@ -11,12 +11,12 @@ class CombinatorTest
   @Test
   void calculateTheBestsCombinationsWithSingleElementAndSingleSize()
   {
-    List<Integer> elementsSizes = singletonList(50);
     int maxSizeWallInCm = 250;
-    
+    WardrobeElements wardrobeElements = new WardrobeElements(ElementSizeInCm.FIFTY);
+
     WardrobeCombinator wardrobeCombinator = new WardrobeCombinator();
     
-    List<Integer> actualCombinations = wardrobeCombinator.combine(elementsSizes, maxSizeWallInCm);
+    List<Integer> actualCombinations = wardrobeCombinator.combine(maxSizeWallInCm, wardrobeElements);
     List<Integer> expectedCombinations = Arrays.asList(50,50,50,50,50);
     
     assertNotNull(actualCombinations);

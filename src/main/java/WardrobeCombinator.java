@@ -6,12 +6,13 @@ public class WardrobeCombinator
 
   public WardrobeCombinator() { }
 
-  public List<Integer> combine(List<Integer> elementsSizes, int maxSizeWallInCm){
+  public List<Integer> combine(int maxSizeWallInCm,
+                               WardrobeElements wardrobeElements){
 
     List<Integer> combinations = new ArrayList<>();
     
     while(calculateSize(combinations) < maxSizeWallInCm){
-      combinations.addAll(elementsSizes);
+      combinations.add(wardrobeElements.getElementSize().getSize());
     }
     return combinations;
   }
