@@ -55,6 +55,41 @@ class WardrobeCombinatorTest
     assertThat(actualElementsCombinations, containsInAnyOrder(firstCombination, secondCombinations));
   }
 
+  @Test
+  void bestsCombinationsWithMultiLengthElements()
+  {
+
+    WardrobeElements wardrobeElements = createWardrobeElements(FIFTY,
+                                                               SEVENTY_FIVE,
+                                                               ONE_HUNDRED,
+                                                               ONE_HUNDRED_TWENTY);
+
+    List<ElementsCombination> actualElementsCombinations =
+        wardrobeCombinator
+            .combine(maxLengthWallInCm, wardrobeElements);
+
+    ElementsCombination firstCombination = new ElementsCombination(
+        Arrays.asList(FIFTY, FIFTY, FIFTY, FIFTY, FIFTY));
+
+    ElementsCombination secondCombinations = new ElementsCombination(
+        Arrays.asList(FIFTY, FIFTY, SEVENTY_FIVE, SEVENTY_FIVE));
+
+    ElementsCombination thirdCombinations = new ElementsCombination(
+        Arrays.asList(FIFTY, FIFTY, FIFTY, ONE_HUNDRED));
+
+    ElementsCombination fourthCombinations = new ElementsCombination(
+        Arrays.asList(SEVENTY_FIVE, SEVENTY_FIVE, ONE_HUNDRED));
+
+    ElementsCombination fifthCombinations = new ElementsCombination(
+        Arrays.asList(FIFTY, ONE_HUNDRED, ONE_HUNDRED));
+
+    assertThat(actualElementsCombinations, containsInAnyOrder(firstCombination,
+                                                              secondCombinations,
+                                                              thirdCombinations,
+                                                              fourthCombinations,
+                                                              fifthCombinations));
+  }
+
   private WardrobeElements createWardrobeElements(ElementLengthInCm... elementLengthInCm)
   {
     return new WardrobeElements(Arrays.asList(elementLengthInCm));
