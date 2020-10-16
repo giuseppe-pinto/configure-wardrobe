@@ -9,7 +9,7 @@ class CombinatorTest
 {
 
   @Test
-  void calculateTheBestsFit()
+  void calculateTheBestsCombinationsWithSingleElementsAndSingleSize()
   {
     List<Integer> elementsSizes = singletonList(50);
     int maxSizeWallInCm = 250;
