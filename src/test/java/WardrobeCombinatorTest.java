@@ -20,9 +20,11 @@ class WardrobeCombinatorTest
   void bestsCombinationsWithSingleSizeElements()
   {
 
+    WardrobeElements wardrobeElements = createWardrobeElements(FIFTY);
+
     List<ElementsCombination> actualElementsCombinations =
         wardrobeCombinator
-            .combine(maxSizeWallInCm, createWardrobeElements(FIFTY));
+            .combine(maxSizeWallInCm, wardrobeElements);
 
     List<ElementsCombination> expectedElementsCombinations =
         singletonList(
@@ -32,7 +34,6 @@ class WardrobeCombinatorTest
     assertNotNull(actualElementsCombinations);
     assertIterableEquals(expectedElementsCombinations, actualElementsCombinations);
   }
-
 
   @Test
   @Disabled
