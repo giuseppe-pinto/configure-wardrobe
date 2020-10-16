@@ -1,27 +1,31 @@
 package com.giuseppe.pinto.configure.wardrobe;
 
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementSizeInCm;
-import com.giuseppe.pinto.configure.wardrobe.domain.WardrobeElements;
+import com.giuseppe.pinto.configure.wardrobe.domain.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import static java.util.Collections.*;
 
 public class WardrobeCombinator
 {
 
-  public WardrobeCombinator() { }
+  public WardrobeCombinator()
+  {
+  }
 
-  public List<ElementSizeInCm> combine(int maxSizeWallInCm,
-                                       WardrobeElements wardrobeElements){
+  public List<ElementsCombination> combine(int maxSizeWallInCm,
+                                           WardrobeElements wardrobeElements)
+  {
 
-    List<ElementSizeInCm> combinations = new ArrayList<>();
-    
-    while(calculateSize(combinations) < maxSizeWallInCm){
-      
-      combinations.addAll(new ArrayList<>(wardrobeElements.getElementSizeInCmSet()));
-      
+    List<ElementSizeInCm> elementSizeInCmArrayList = new ArrayList<>();
+    while (calculateSize(elementSizeInCmArrayList) < maxSizeWallInCm)
+    {
+
+      elementSizeInCmArrayList.addAll(new ArrayList<>(wardrobeElements.getElementSizeInCmSet()));
+
     }
-    return combinations;
+
+    return singletonList(new ElementsCombination(elementSizeInCmArrayList));
   }
 
   private Integer calculateSize(List<ElementSizeInCm> combinations)
