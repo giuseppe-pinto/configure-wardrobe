@@ -9,18 +9,17 @@ class CombinatorTest
 {
 
   @Test
-  void calculateTheBestsCombinationsWithSingleElementsAndSingleSize()
+  void calculateTheBestsCombinationsWithSingleElementAndSingleSize()
   {
     List<Integer> elementsSizes = singletonList(50);
     int maxSizeWallInCm = 250;
     
     WardrobeCombinator wardrobeCombinator = new WardrobeCombinator();
     
-    List<Integer> combinations = wardrobeCombinator.combine(elementsSizes, maxSizeWallInCm);
-
-    List<Integer> expected = Arrays.asList(50,50,50,50,50);
+    List<Integer> actualCombinations = wardrobeCombinator.combine(elementsSizes, maxSizeWallInCm);
+    List<Integer> expectedCombinations = Arrays.asList(50,50,50,50,50);
     
-    assertNotNull(combinations);
-    assertIterableEquals(expected, combinations);
+    assertNotNull(actualCombinations);
+    assertIterableEquals(expectedCombinations, actualCombinations);
   }
 }
