@@ -3,84 +3,54 @@ package com.giuseppe.pinto.configure.wardrobe;
 import com.giuseppe.pinto.configure.wardrobe.domain.*;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class WardrobeCombinator
 {
+
+  private final MatrixCreator matrixCreator;
+  private final CombinationsCalculator combinationsCalculator;
+
+  public WardrobeCombinator()
+  {
+    matrixCreator = new MatrixCreator();
+    combinationsCalculator = new CombinationsCalculator();
+  }
 
   public List<ElementsCombination> combine(int maxLengthWallInCm,
                                            WardrobeElements wardrobeElements)
   {
 
+    List<ElementLengthInCm> elements = wardrobeElements.getElementLengthInCm();
     List<ElementsCombination> combinations = new ArrayList<>();
 
-    List<ElementLengthInCm> list = wardrobeElements.getElementLengthInCm();
-
-    for (int i = 0; i < list.size(); i++)
+    for (int i = 0; i < elements.size(); i++)
     {
-      for (int s = i; s < list.size(); s++)
+      for (int j = i; j < elements.size(); j++)
       {
-        for (int j = 0; j < 6; j++)
-        {
-          List<ElementLengthInCm> temp = new ArrayList<>();
+        ElementLengthInCm[][] matrix = matrixCreator
+            .invoke(elements.get(i), elements.get(j));
 
-          for (int k = 0; k < 5; k++)
-          {
-            if (calculateLength(temp) < maxLengthWallInCm)
-            {
-              if (j == 1 && k >= 4)
-              {
-                temp.add(list.get(s + 1));
-              }
-              else if (j == 2 && k >= 3)
-              {
-                temp.add(list.get(s + 1));
-              }
-              else if (j == 3 && k >= 2)
-              {
-                temp.add(list.get(s + 1));
-              }
-              else if (j == 4 && k >= 1)
-              {
-                temp.add(list.get(s + 1));
-              }
-              else if (j == 5)
-              {
-                temp.add(list.get(s + 1));
-              }
-              else
-              {
-                temp.add(list.get(i));
-              }
-            }
-            if (calculateLength(temp) == maxLengthWallInCm)
-            {
-              if (!combinations.contains(new ElementsCombination(temp)))
-              {
-                combinations.add(new ElementsCombination(temp));
-              }
-            }
-          }
+        List<ElementsCombination> elementsCombinations =
+            combinationsCalculator.from(matrix, maxLengthWallInCm);
 
-          if (s + 1 == list.size())
-            break;
-        }
+        elementsCombinations.forEach(ifNotPresentAddIn(combinations));
       }
 
     }
+
     return combinations;
+
   }
 
-  private Integer calculateLength(List<ElementLengthInCm> combinations)
+  private Consumer<ElementsCombination> ifNotPresentAddIn(List<ElementsCombination> combinations)
   {
-    return combinations.stream().map(ElementLengthInCm::getSize).reduce(0, Integer::sum);
-  }
-
-  public List<ElementsCombination> combine2(int maxLengthWallInCm,
-                                            WardrobeElements wardrobeElements)
-  {
-    
-    return null;
-
+    return combination -> {
+      if (!combinations.contains(combination))
+      {
+        combinations.add(combination);
+      }
+    };
   }
 
 }

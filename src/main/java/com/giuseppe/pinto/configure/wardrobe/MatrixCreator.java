@@ -10,10 +10,12 @@ public class MatrixCreator
   public ElementLengthInCm[][] invoke(ElementLengthInCm firstElement,
                                       ElementLengthInCm secondElement)
   {
-    ElementLengthInCm[][] matrix =
-        new ElementLengthInCm[MAX_NUMBER_OF_ELEMENTS][MAX_NUMBER_OF_ELEMENTS];
 
-    for (int lines = 0; lines < MAX_NUMBER_OF_ELEMENTS; lines++)
+    int numberOfLines = firstElement.equals(secondElement) ? 1 : MAX_NUMBER_OF_ELEMENTS;
+    ElementLengthInCm[][] matrix =
+        new ElementLengthInCm[numberOfLines][MAX_NUMBER_OF_ELEMENTS];
+
+    for (int lines = 0; lines < numberOfLines; lines++)
     {
 
       for (int columns = 0; columns < MAX_NUMBER_OF_ELEMENTS; columns++)

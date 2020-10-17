@@ -33,4 +33,20 @@ class MatrixCreatorTest
     assertEquals(Arrays.deepToString(actualMatrix), Arrays.deepToString(expectedMatrix));
   }
 
+  @Test
+  void createSingleLineMatrix()
+  {
+
+    MatrixCreator creator = new MatrixCreator();
+
+    ElementLengthInCm[][] actualMatrix = creator.invoke(FIFTY, FIFTY);
+
+    String matrixInString = "50 50 50 50 50";
+
+    ElementLengthInCm[][] expectedMatrix =
+        matrixUtilities.createMatrixOfElementsFrom(matrixInString);
+
+    assertEquals(Arrays.deepToString(expectedMatrix), Arrays.deepToString(actualMatrix));
+
+  }
 }
