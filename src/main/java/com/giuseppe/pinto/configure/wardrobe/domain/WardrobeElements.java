@@ -4,15 +4,15 @@ import java.util.List;
 
 public class WardrobeElements
 {
-  private final List<ElementLengthInCm> elementLengthInCmList;
+  private final List<Element> elements;
 
-  public WardrobeElements(List<ElementLengthInCm> elementLengthInCmList)
+  public WardrobeElements(List<Element> elements)
   {
-    this.elementLengthInCmList = elementLengthInCmList;
+    this.elements = elements;
   }
 
-  public List<ElementLengthInCm> getElementLengthInCm()
+  public List<Element> getElements()
   {
-    return elementLengthInCmList;
+    return elements;
   }
 }

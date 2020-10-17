@@ -1,19 +1,19 @@
 package com.giuseppe.pinto.configure.wardrobe;
 
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm;
+import com.giuseppe.pinto.configure.wardrobe.domain.Element;
 
 public class MatrixCreator
 {
 
   private static final int MAX_NUMBER_OF_ELEMENTS = 5;
 
-  public ElementLengthInCm[][] invoke(ElementLengthInCm firstElement,
-                                      ElementLengthInCm secondElement)
+  public Element[][] invoke(Element firstElement,
+                            Element secondElement)
   {
 
     int numberOfLines = firstElement.equals(secondElement) ? 1 : MAX_NUMBER_OF_ELEMENTS;
-    ElementLengthInCm[][] matrix =
-        new ElementLengthInCm[numberOfLines][MAX_NUMBER_OF_ELEMENTS];
+    Element[][] matrix =
+        new Element[numberOfLines][MAX_NUMBER_OF_ELEMENTS];
 
     for (int lines = 0; lines < numberOfLines; lines++)
     {

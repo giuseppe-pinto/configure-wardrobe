@@ -1,11 +1,12 @@
 package com.giuseppe.pinto.configure.wardrobe;
 
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm;
+import com.giuseppe.pinto.configure.wardrobe.domain.Element;
+import com.giuseppe.pinto.configure.wardrobe.utilities.MatrixUtilities;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm.*;
+import static com.giuseppe.pinto.configure.wardrobe.domain.Element.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixCreatorTest
@@ -19,7 +20,7 @@ class MatrixCreatorTest
 
     MatrixCreator creator = new MatrixCreator();
 
-    ElementLengthInCm[][] actualMatrix = creator.invoke(FIFTY, SEVENTY_FIVE);
+    Element[][] actualMatrix = creator.invoke(FIFTY, SEVENTY_FIVE);
 
     String matrixInString = "50 50 50 50 75-"
         + "50 50 50 75 75-"
@@ -27,7 +28,7 @@ class MatrixCreatorTest
         + "50 75 75 75 75-"
         + "75 75 75 75 75-";
 
-    ElementLengthInCm[][] expectedMatrix =
+    Element[][] expectedMatrix =
         matrixUtilities.createMatrixOfElementsFrom(matrixInString);
 
     assertEquals(Arrays.deepToString(actualMatrix), Arrays.deepToString(expectedMatrix));
@@ -39,11 +40,11 @@ class MatrixCreatorTest
 
     MatrixCreator creator = new MatrixCreator();
 
-    ElementLengthInCm[][] actualMatrix = creator.invoke(FIFTY, FIFTY);
+    Element[][] actualMatrix = creator.invoke(FIFTY, FIFTY);
 
     String matrixInString = "50 50 50 50 50";
 
-    ElementLengthInCm[][] expectedMatrix =
+    Element[][] expectedMatrix =
         matrixUtilities.createMatrixOfElementsFrom(matrixInString);
 
     assertEquals(Arrays.deepToString(expectedMatrix), Arrays.deepToString(actualMatrix));

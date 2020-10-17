@@ -1,16 +1,16 @@
-package com.giuseppe.pinto.configure.wardrobe;
+package com.giuseppe.pinto.configure.wardrobe.utilities;
 
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm;
+import com.giuseppe.pinto.configure.wardrobe.domain.Element;
 
-import static com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm.*;
+import static com.giuseppe.pinto.configure.wardrobe.domain.Element.*;
 
 public class MatrixUtilities
 {
 
-  public ElementLengthInCm[][] createMatrixOfElementsFrom(String matrixInString)
+  public Element[][] createMatrixOfElementsFrom(String matrixInString)
   {
     String[] lines = matrixInString.split("-");
-    ElementLengthInCm[][] matrix = new ElementLengthInCm[lines.length][5];
+    Element[][] matrix = new Element[lines.length][5];
 
     for (int i = 0; i < lines.length; i++)
     {
@@ -23,7 +23,7 @@ public class MatrixUtilities
     return matrix;
   }
 
-  private ElementLengthInCm adaptToElement(String s)
+  private Element adaptToElement(String s)
   {
     if ("50".equals(s))
     {

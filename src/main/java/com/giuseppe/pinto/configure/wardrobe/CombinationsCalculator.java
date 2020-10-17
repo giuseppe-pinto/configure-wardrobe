@@ -1,7 +1,7 @@
 package com.giuseppe.pinto.configure.wardrobe;
 
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm;
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementsCombination;
+import com.giuseppe.pinto.configure.wardrobe.domain.Element;
+import com.giuseppe.pinto.configure.wardrobe.domain.Combination;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,36 +9,36 @@ import java.util.List;
 public class CombinationsCalculator
 {
 
-  public List<ElementsCombination> from(ElementLengthInCm[][] matrixOfCombinations,
-                                        int maxLengthWallInCm)
+  public List<Combination> from(Element[][] matrixOfCombinations,
+                                int wallLength)
   {
     int numberOfLines = matrixOfCombinations.length;
     int numberOfColumns = matrixOfCombinations[0].length;
-    List<ElementsCombination> combinations = new ArrayList<>();
+    List<Combination> combinations = new ArrayList<>();
 
     for (int lines = 0; lines < numberOfLines; lines++)
     {
-      List<ElementLengthInCm> temp = new ArrayList<>();
+      List<Element> temp = new ArrayList<>();
 
       for (int columns = 0; columns < numberOfColumns; columns++)
       {
-        if (calculateLength(temp) < maxLengthWallInCm)
+        if (calculateLength(temp) < wallLength)
         {
           temp.add(matrixOfCombinations[lines][columns]);
         }
       }
 
-      if (calculateLength(temp) == maxLengthWallInCm)
+      if (calculateLength(temp) == wallLength)
       {
-        combinations.add(new ElementsCombination(temp));
+        combinations.add(new Combination(temp));
       }
     }
 
     return combinations;
   }
 
-  private Integer calculateLength(List<ElementLengthInCm> combinations)
+  private Integer calculateLength(List<Element> combinations)
   {
-    return combinations.stream().map(ElementLengthInCm::getSize).reduce(0, Integer::sum);
+    return combinations.stream().map(Element::getSize).reduce(0, Integer::sum);
   }
 }

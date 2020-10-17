@@ -1,14 +1,15 @@
 package com.giuseppe.pinto.configure.wardrobe;
 
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm;
-import com.giuseppe.pinto.configure.wardrobe.domain.ElementsCombination;
+import com.giuseppe.pinto.configure.wardrobe.domain.Element;
+import com.giuseppe.pinto.configure.wardrobe.domain.Combination;
+import com.giuseppe.pinto.configure.wardrobe.utilities.MatrixUtilities;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm.FIFTY;
-import static com.giuseppe.pinto.configure.wardrobe.domain.ElementLengthInCm.SEVENTY_FIVE;
+import static com.giuseppe.pinto.configure.wardrobe.domain.Element.FIFTY;
+import static com.giuseppe.pinto.configure.wardrobe.domain.Element.SEVENTY_FIVE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,12 +25,12 @@ class CombinationsCalculatorTest
   void calculateCombinationsForMatrixFiftySeventyFive()
   {
 
-    ElementLengthInCm[][] matrix = matrixCreator
+    Element[][] matrix = matrixCreator
         .invoke(FIFTY, SEVENTY_FIVE);
 
-    List<ElementsCombination> actualCombinations = calculator.from(matrix, MAX_LENGTH_WALL_IN_CM);
+    List<Combination> actualCombinations = calculator.from(matrix, MAX_LENGTH_WALL_IN_CM);
 
-    ElementsCombination expectedCombination = new ElementsCombination(
+    Combination expectedCombination = new Combination(
         Arrays.asList(FIFTY, FIFTY, SEVENTY_FIVE, SEVENTY_FIVE)
     );
 
@@ -40,12 +41,12 @@ class CombinationsCalculatorTest
   @Test
   void calculateCombinationWithSingleLineMatrix()
   {
-    ElementLengthInCm[][] matrix = new MatrixUtilities()
+    Element[][] matrix = new MatrixUtilities()
         .createMatrixOfElementsFrom("50 50 50 50 50");
 
-    List<ElementsCombination> actualCombinations = calculator.from(matrix, MAX_LENGTH_WALL_IN_CM);
+    List<Combination> actualCombinations = calculator.from(matrix, MAX_LENGTH_WALL_IN_CM);
 
-    ElementsCombination expectedCombination = new ElementsCombination(
+    Combination expectedCombination = new Combination(
         Arrays.asList(FIFTY, FIFTY, FIFTY, FIFTY, FIFTY)
     );
 
