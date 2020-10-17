@@ -20,6 +20,7 @@ The wall on which the wardrobe elements are placed has a total length of 250cm.
 `
 
 Additional Task
+
 Here is the price list for the available wardrobe elements:
 
     50cm => 59 USD

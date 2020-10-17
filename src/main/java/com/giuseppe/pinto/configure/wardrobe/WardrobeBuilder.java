@@ -5,20 +5,21 @@ import com.giuseppe.pinto.configure.wardrobe.domain.*;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class Wardrobe
+public class WardrobeBuilder
 {
 
   private final MatrixCreator matrixCreator;
   private final CombinationsCalculator combinationsCalculator;
+  private final int wallLength;
 
-  public Wardrobe()
+  public WardrobeBuilder(int wallLength)
   {
+    this.wallLength = wallLength;
     matrixCreator = new MatrixCreator();
     combinationsCalculator = new CombinationsCalculator();
   }
 
-  public List<Combination> buildOn(int wallLength,
-                                   WardrobeElements wardrobeElements)
+  public List<Combination> with(WardrobeElements wardrobeElements)
   {
 
     List<Element> elements = wardrobeElements.getElements();

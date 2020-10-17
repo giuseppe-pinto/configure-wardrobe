@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 class WardrobeTest
 {
 
-  private final Wardrobe wardrobe = new Wardrobe();
   private final int wallLength = 250;
+  private final WardrobeBuilder wardrobeBuilder = new WardrobeBuilder(wallLength);
 
   @Test
   void bestsCombinationsWithSingleLengthElements()
@@ -24,8 +24,8 @@ class WardrobeTest
     WardrobeElements wardrobeElements = createWardrobeElements(FIFTY);
 
     List<Combination> actualCombinations =
-        wardrobe
-            .buildOn(wallLength, wardrobeElements);
+        wardrobeBuilder
+            .with(wardrobeElements);
 
     List<Combination> expectedCombinations =
         singletonList(
@@ -43,8 +43,8 @@ class WardrobeTest
                                                                SEVENTY_FIVE);
 
     List<Combination> actualCombinations =
-        wardrobe
-            .buildOn(wallLength, wardrobeElements);
+        wardrobeBuilder
+            .with(wardrobeElements);
 
     Combination firstCombination = new Combination(
         Arrays.asList(FIFTY, FIFTY, FIFTY, FIFTY, FIFTY));
@@ -65,8 +65,8 @@ class WardrobeTest
                                                                ONE_HUNDRED_TWENTY);
 
     List<Combination> actualCombinations =
-        wardrobe
-            .buildOn(wallLength, wardrobeElements);
+        wardrobeBuilder
+            .with(wardrobeElements);
 
     Combination firstCombination = new Combination(
         Arrays.asList(FIFTY, FIFTY, FIFTY, FIFTY, FIFTY));
