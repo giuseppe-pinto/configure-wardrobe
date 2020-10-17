@@ -1,6 +1,7 @@
-package com.giuseppe.pinto.configure.wardrobe;
+package com.giuseppe.pinto.configure.wardrobe.logic;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.*;
+import com.giuseppe.pinto.configure.wardrobe.logic.CombinationsSupplier;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -12,11 +13,11 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
-class WardrobeBuilderTest
+class CombinationsSupplierTest
 {
 
   private final int wallLength = 250;
-  private final WardrobeBuilder wardrobeBuilder = new WardrobeBuilder(wallLength);
+  private final CombinationsSupplier combinationsSupplier = new CombinationsSupplier(wallLength);
 
   @Test
   void bestsCombinationsWithSingleLengthElements()
@@ -24,8 +25,8 @@ class WardrobeBuilderTest
     WardrobeElements wardrobeElements = new WardrobeElements(Arrays.asList(LENGTH_OF_FIFTY));
 
     List<Combination> actualCombinations =
-        wardrobeBuilder
-            .with(wardrobeElements);
+        combinationsSupplier
+            .from(wardrobeElements);
 
     List<Combination> expectedCombinations =
         singletonList(
@@ -42,8 +43,8 @@ class WardrobeBuilderTest
     WardrobeElements wardrobeElements = new WardrobeElements(Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_SEVENTY_FIVE));
 
     List<Combination> actualCombinations =
-        wardrobeBuilder
-            .with(wardrobeElements);
+        combinationsSupplier
+            .from(wardrobeElements);
 
     Combination firstCombination = new Combination(
         Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY));
@@ -64,8 +65,8 @@ class WardrobeBuilderTest
                                                                            LENGTH_OF_ONE_HUNDRED_TWENTY));
 
     List<Combination> actualCombinations =
-        wardrobeBuilder
-            .with(wardrobeElements);
+        combinationsSupplier
+            .from(wardrobeElements);
 
     Combination firstCombination = new Combination(
         Arrays

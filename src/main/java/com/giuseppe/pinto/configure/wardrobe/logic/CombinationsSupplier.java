@@ -1,25 +1,27 @@
-package com.giuseppe.pinto.configure.wardrobe;
+package com.giuseppe.pinto.configure.wardrobe.logic;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.*;
+import com.giuseppe.pinto.configure.wardrobe.logic.CombinationsCalculator;
+import com.giuseppe.pinto.configure.wardrobe.logic.MatrixCreator;
 
 import java.util.*;
 import java.util.function.Consumer;
 
-public class WardrobeBuilder
+public class CombinationsSupplier
 {
 
   private final MatrixCreator matrixCreator;
   private final CombinationsCalculator combinationsCalculator;
   private final int wallLength;
 
-  public WardrobeBuilder(int wallLength)
+  public CombinationsSupplier(int wallLength)
   {
     this.wallLength = wallLength;
     matrixCreator = new MatrixCreator();
     combinationsCalculator = new CombinationsCalculator();
   }
 
-  public List<Combination> with(WardrobeElements wardrobeElements)
+  public List<Combination> from(WardrobeElements wardrobeElements)
   {
 
     List<Element> elements = wardrobeElements.getElements();

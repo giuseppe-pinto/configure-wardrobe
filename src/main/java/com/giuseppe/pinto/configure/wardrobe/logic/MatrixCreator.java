@@ -1,4 +1,4 @@
-package com.giuseppe.pinto.configure.wardrobe;
+package com.giuseppe.pinto.configure.wardrobe.logic;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.Element;
 

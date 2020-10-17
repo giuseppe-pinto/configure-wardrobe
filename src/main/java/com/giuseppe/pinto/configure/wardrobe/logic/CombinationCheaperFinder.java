@@ -1,17 +1,17 @@
-package com.giuseppe.pinto.configure.wardrobe;
+package com.giuseppe.pinto.configure.wardrobe.logic;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.Combination;
 
 import java.math.BigDecimal;
-import java.util.*;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-import static java.util.AbstractMap.*;
+import static java.util.AbstractMap.Entry;
+import static java.util.AbstractMap.SimpleEntry;
 
-public class FinderCheaperCombination implements Function<List<Combination>, Optional<Combination>>
+public class CombinationCheaperFinder
 {
 
-  @Override
   public Optional<Combination> apply(List<Combination> combinations)
   {
     return combinations

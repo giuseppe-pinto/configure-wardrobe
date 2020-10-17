@@ -1,6 +1,7 @@
-package com.giuseppe.pinto.configure.wardrobe;
+package com.giuseppe.pinto.configure.wardrobe.logic;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.Element;
+import com.giuseppe.pinto.configure.wardrobe.logic.MatrixCreator;
 import com.giuseppe.pinto.configure.wardrobe.utilities.MatrixUtilities;
 import org.junit.jupiter.api.Test;
 

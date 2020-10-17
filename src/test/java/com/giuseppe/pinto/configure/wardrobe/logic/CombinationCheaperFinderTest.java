@@ -1,4 +1,4 @@
-package com.giuseppe.pinto.configure.wardrobe;
+package com.giuseppe.pinto.configure.wardrobe.logic;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.Combination;
 import org.junit.jupiter.api.Test;
@@ -9,10 +9,10 @@ import static com.giuseppe.pinto.configure.wardrobe.domain.Element.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class CheaperCombinationTest
+class CombinationCheaperFinderTest
 {
 
-  private final FinderCheaperCombination finderCheaperCombination = new FinderCheaperCombination();
+  private final CombinationCheaperFinder combinationCheaperFinder = new CombinationCheaperFinder();
 
   @Test
   void findCheaper()
@@ -31,7 +31,7 @@ class CheaperCombinationTest
                                                    of239Usd);
 
     Optional<Combination> actualCombinations =
-        finderCheaperCombination.apply(combinations);
+        combinationCheaperFinder.apply(combinations);
 
     assertTrue(actualCombinations.isPresent());
     assertEquals(of214Usd, actualCombinations.get());
@@ -41,7 +41,7 @@ class CheaperCombinationTest
   void findCheaperWithoutElements()
   {
     Optional<Combination> actualCombinations =
-        finderCheaperCombination.apply(new ArrayList<>());
+        combinationCheaperFinder.apply(new ArrayList<>());
 
     assertTrue(actualCombinations.isEmpty());
   }
