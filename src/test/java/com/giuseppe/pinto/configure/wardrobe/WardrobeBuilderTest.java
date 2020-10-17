@@ -63,32 +63,25 @@ class WardrobeBuilderTest
                                                                            LENGTH_OF_ONE_HUNDRED,
                                                                            LENGTH_OF_ONE_HUNDRED_TWENTY));
 
-/*
-    50cm => 59 USD
-    75cm => 62 USD
-    100cm => 90 USD
-    120cm => 111 USD
-*/
-
     List<Combination> actualCombinations =
         wardrobeBuilder
             .with(wardrobeElements);
 
     Combination firstCombination = new Combination(
         Arrays
-            .asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY)); // -> 295 USD
+            .asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY));
 
     Combination secondCombinations = new Combination(
-        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE)); // -> 224
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE));
 
     Combination thirdCombinations = new Combination(
-        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_ONE_HUNDRED)); // -> 267
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_ONE_HUNDRED));
 
     Combination fourthCombinations = new Combination(
-        Arrays.asList(LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_ONE_HUNDRED)); // -> 214
+        Arrays.asList(LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_ONE_HUNDRED));
 
     Combination fifthCombinations = new Combination(
-        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_ONE_HUNDRED, LENGTH_OF_ONE_HUNDRED)); // -> 239
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_ONE_HUNDRED, LENGTH_OF_ONE_HUNDRED));
 
     assertThat(actualCombinations, containsInAnyOrder(firstCombination,
                                                       secondCombinations,

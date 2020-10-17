@@ -1,13 +1,11 @@
 package com.giuseppe.pinto.configure.wardrobe;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.Combination;
-import com.giuseppe.pinto.configure.wardrobe.domain.WardrobeElements;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
 import static com.giuseppe.pinto.configure.wardrobe.domain.Element.*;
-import static com.giuseppe.pinto.configure.wardrobe.domain.Element.LENGTH_OF_ONE_HUNDRED_TWENTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,24 +17,24 @@ class CheaperCombinationTest
   @Test
   void findCheaper()
   {
-    WardrobeBuilder wardrobeBuilder = new WardrobeBuilder(250);
 
-    WardrobeElements wardrobeElements = new WardrobeElements(Arrays.asList(LENGTH_OF_FIFTY,
-                                                                           LENGTH_OF_SEVENTY_FIVE,
-                                                                           LENGTH_OF_ONE_HUNDRED,
-                                                                           LENGTH_OF_ONE_HUNDRED_TWENTY));
+    Combination of295Usd = createCombinationOf295Usd();
+    Combination of224Usd = createCombinationOf224Usd();
+    Combination of267Usd = createCombinationOf267Usd();
+    Combination of214Usd = createCombinationOf214Usd();
+    Combination of239Usd = createCombinationOf239Usd();
 
-    List<Combination> combinations =
-        wardrobeBuilder.with(wardrobeElements);
+    List<Combination> combinations = Arrays.asList(of295Usd,
+                                                   of224Usd,
+                                                   of267Usd,
+                                                   of214Usd,
+                                                   of239Usd);
 
     Optional<Combination> actualCombinations =
         finderCheaperCombination.apply(combinations);
 
-    Combination expectedCombination = new Combination(
-        Arrays.asList(LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_ONE_HUNDRED));
-
     assertTrue(actualCombinations.isPresent());
-    assertEquals(expectedCombination, actualCombinations.get());
+    assertEquals(of214Usd, actualCombinations.get());
   }
 
   @Test
@@ -46,5 +44,36 @@ class CheaperCombinationTest
         finderCheaperCombination.apply(new ArrayList<>());
 
     assertTrue(actualCombinations.isEmpty());
+  }
+
+  private Combination createCombinationOf239Usd()
+  {
+    return new Combination(
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_ONE_HUNDRED, LENGTH_OF_ONE_HUNDRED));
+  }
+
+  private Combination createCombinationOf214Usd()
+  {
+    return new Combination(
+        Arrays.asList(LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_ONE_HUNDRED));
+  }
+
+  private Combination createCombinationOf267Usd()
+  {
+    return new Combination(
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_ONE_HUNDRED));
+  }
+
+  private Combination createCombinationOf224Usd()
+  {
+    return new Combination(
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE));
+  }
+
+  private Combination createCombinationOf295Usd()
+  {
+    return new Combination(
+        Arrays
+            .asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY));
   }
 }
