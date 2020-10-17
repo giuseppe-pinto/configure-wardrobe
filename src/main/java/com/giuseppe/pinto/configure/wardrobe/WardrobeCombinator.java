@@ -74,5 +74,32 @@ public class WardrobeCombinator
   {
     return combinations.stream().map(ElementLengthInCm::getSize).reduce(0, Integer::sum);
   }
+  
+  private List<ElementsCombination> calculateCombinationsFrom
+      (ElementLengthInCm[][] matrixOfCombinations)
+  {
+
+    List<ElementsCombination> combinations = new ArrayList<>();
+
+    for (int lines = 0; lines < 5; lines++)
+    {
+      List<ElementLengthInCm> temp = new ArrayList<>();
+
+      for (int columns = 0; columns < 5; columns++)
+      {
+        if (calculateLength(temp) < 250)
+        {
+          temp.add(matrixOfCombinations[lines][columns]);
+        }
+      }
+
+      if (calculateLength(temp) == 250)
+      {
+        combinations.add(new ElementsCombination(temp));
+      }
+    }
+
+    return combinations;
+  }
 
 }
