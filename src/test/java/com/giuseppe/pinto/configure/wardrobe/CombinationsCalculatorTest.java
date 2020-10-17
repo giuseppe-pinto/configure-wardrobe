@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.giuseppe.pinto.configure.wardrobe.domain.Element.FIFTY;
-import static com.giuseppe.pinto.configure.wardrobe.domain.Element.SEVENTY_FIVE;
+import static com.giuseppe.pinto.configure.wardrobe.domain.Element.LENGTH_OF_FIFTY;
+import static com.giuseppe.pinto.configure.wardrobe.domain.Element.LENGTH_OF_SEVENTY_FIVE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,12 +26,12 @@ class CombinationsCalculatorTest
   {
 
     Element[][] matrix = matrixCreator
-        .invoke(FIFTY, SEVENTY_FIVE);
+        .invoke(LENGTH_OF_FIFTY, LENGTH_OF_SEVENTY_FIVE);
 
     List<Combination> actualCombinations = calculator.from(matrix, MAX_LENGTH_WALL_IN_CM);
 
     Combination expectedCombination = new Combination(
-        Arrays.asList(FIFTY, FIFTY, SEVENTY_FIVE, SEVENTY_FIVE)
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE)
     );
 
     assertEquals(actualCombinations.size(), 1);
@@ -47,7 +47,7 @@ class CombinationsCalculatorTest
     List<Combination> actualCombinations = calculator.from(matrix, MAX_LENGTH_WALL_IN_CM);
 
     Combination expectedCombination = new Combination(
-        Arrays.asList(FIFTY, FIFTY, FIFTY, FIFTY, FIFTY)
+        Arrays.asList(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY, LENGTH_OF_FIFTY)
     );
 
     assertEquals(actualCombinations.size(), 1);

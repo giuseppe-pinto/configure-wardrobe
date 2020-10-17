@@ -20,7 +20,7 @@ class MatrixCreatorTest
 
     MatrixCreator creator = new MatrixCreator();
 
-    Element[][] actualMatrix = creator.invoke(FIFTY, SEVENTY_FIVE);
+    Element[][] actualMatrix = creator.invoke(LENGTH_OF_FIFTY, LENGTH_OF_SEVENTY_FIVE);
 
     String matrixInString = "50 50 50 50 75-"
         + "50 50 50 75 75-"
@@ -40,7 +40,7 @@ class MatrixCreatorTest
 
     MatrixCreator creator = new MatrixCreator();
 
-    Element[][] actualMatrix = creator.invoke(FIFTY, FIFTY);
+    Element[][] actualMatrix = creator.invoke(LENGTH_OF_FIFTY, LENGTH_OF_FIFTY);
 
     String matrixInString = "50 50 50 50 50";
 

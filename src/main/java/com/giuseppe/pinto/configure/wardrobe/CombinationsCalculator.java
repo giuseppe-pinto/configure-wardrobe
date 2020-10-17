@@ -9,8 +9,7 @@ import java.util.List;
 public class CombinationsCalculator
 {
 
-  public List<Combination> from(Element[][] matrixOfCombinations,
-                                int wallLength)
+  public List<Combination> from(Element[][] matrixOfCombinations, int wallLength)
   {
     int numberOfLines = matrixOfCombinations.length;
     int numberOfColumns = matrixOfCombinations[0].length;

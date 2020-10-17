@@ -27,19 +27,19 @@ public class MatrixUtilities
   {
     if ("50".equals(s))
     {
-      return FIFTY;
+      return LENGTH_OF_FIFTY;
     }
     else if ("75".equals(s))
     {
-      return SEVENTY_FIVE;
+      return LENGTH_OF_SEVENTY_FIVE;
     }
     else if ("100".equals(s))
     {
-      return ONE_HUNDRED;
+      return LENGTH_OF_ONE_HUNDRED;
     }
     else
     {
-      return ONE_HUNDRED_TWENTY;
+      return LENGTH_OF_ONE_HUNDRED_TWENTY;
     }
   }
 }

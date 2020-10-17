@@ -5,11 +5,17 @@ import java.util.Objects;
 
 public class Combination
 {
-  private final List<Element> elementList;
 
-  public Combination(List<Element> elementList)
+  private final List<Element> elements;
+
+  public Combination(List<Element> elements)
   {
-    this.elementList = elementList;
+    this.elements = elements;
+  }
+
+  public List<Element> getElements()
+  {
+    return elements;
   }
 
   @Override
@@ -20,18 +26,18 @@ public class Combination
     if (o == null || getClass() != o.getClass())
       return false;
     Combination that = (Combination) o;
-    return Objects.equals(elementList, that.elementList);
+    return Objects.equals(elements, that.elements);
   }
 
   @Override public int hashCode()
   {
-    return Objects.hash(elementList);
+    return Objects.hash(elements);
   }
 
   @Override public String toString()
   {
     return "Combination{" +
-        "elementList=" + elementList +
+        "elements=" + elements +
         '}';
   }
 }
