@@ -3,7 +3,7 @@ package com.giuseppe.pinto.configure.wardrobe;
 import com.giuseppe.pinto.configure.wardrobe.domain.Combination;
 import com.giuseppe.pinto.configure.wardrobe.domain.WardrobeElements;
 import com.giuseppe.pinto.configure.wardrobe.logic.CombinationCheaperFinder;
-import com.giuseppe.pinto.configure.wardrobe.logic.CombinationsSupplier;
+import com.giuseppe.pinto.configure.wardrobe.logic.CombinationsSupplierWithMatrix;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ class WardrobeCheaperBuilderTest
     Combination expectedCheaperCombination = new Combination(
         Arrays.asList(LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_SEVENTY_FIVE, LENGTH_OF_ONE_HUNDRED));
 
-    WardrobeCheaperBuilder builder = new WardrobeCheaperBuilder(new CombinationsSupplier(250),
+    WardrobeCheaperBuilder builder = new WardrobeCheaperBuilder(new CombinationsSupplierWithMatrix(250),
                                                                 new CombinationCheaperFinder());
 
     Optional<Combination> actualCombination = builder.from(wardrobeElements);

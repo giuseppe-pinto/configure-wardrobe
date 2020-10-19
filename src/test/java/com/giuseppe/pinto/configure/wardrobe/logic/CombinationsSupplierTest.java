@@ -1,7 +1,6 @@
 package com.giuseppe.pinto.configure.wardrobe.logic;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.*;
-import com.giuseppe.pinto.configure.wardrobe.logic.CombinationsSupplier;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -17,7 +16,7 @@ class CombinationsSupplierTest
 {
 
   private final int wallLength = 250;
-  private final CombinationsSupplier combinationsSupplier = new CombinationsSupplier(wallLength);
+  private final CombinationsSupplier combinationsSupplier = new CombinationsSupplierWithMatrix(wallLength);
 
   @Test
   void bestsCombinationsWithSingleLengthElements()

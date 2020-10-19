@@ -2,8 +2,7 @@ package com.giuseppe.pinto.configure.wardrobe;
 
 import com.giuseppe.pinto.configure.wardrobe.domain.Combination;
 import com.giuseppe.pinto.configure.wardrobe.domain.WardrobeElements;
-import com.giuseppe.pinto.configure.wardrobe.logic.CombinationsSupplier;
-import com.giuseppe.pinto.configure.wardrobe.logic.CombinationCheaperFinder;
+import com.giuseppe.pinto.configure.wardrobe.logic.*;
 
 import java.util.Optional;
 
